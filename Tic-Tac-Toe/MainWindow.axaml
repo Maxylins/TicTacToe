@@ -1,0 +1,44 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        x:Class="Tic_Tac_Toe.MainWindow"
+Title="Крестики-Нолики" Width="350" Height="520" WindowStartupLocation="CenterScreen">
+
+	<StackPanel Margin="20" Spacing="10">
+		<TextBlock Name="lblStatus" Text="Войдите или зарегистрируйтесь" HorizontalAlignment="Center" FontWeight="Bold" FontSize="16"/>
+
+		<StackPanel Name="authPanel" Spacing="10" Margin="0,40,0,0">
+			<TextBox Name="txtUsername" Watermark="Логин"/>
+			<TextBox Name="txtPassword" Watermark="Пароль" PasswordChar="*"/>
+			<Button Content="Войти" Click="OnAuthClick" CommandParameter="login" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
+			<Button Content="Регистрация" Click="OnAuthClick" CommandParameter="reg" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
+		</StackPanel>
+
+		<StackPanel Name="gamePanel" IsVisible="False" Spacing="10">
+			<DockPanel>
+				<TextBlock Name="lblUserInfo" Text="Игрок: - | Побед: 0" VerticalAlignment="Center" Foreground="Green" FontWeight="Medium"/>
+				<Button Content="Заново" Click="OnResetClick" HorizontalAlignment="Right"/>
+			</DockPanel>
+
+			<UniformGrid Name="gridBoard" Columns="3" Rows="3" Height="270">
+				<Button Click="OnMoveClick" CommandParameter="0" FontSize="28" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+				<Button Click="OnMoveClick" CommandParameter="1" FontSize="28" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+				<Button Click="OnMoveClick" CommandParameter="2" FontSize="28" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+				<Button Click="OnMoveClick" CommandParameter="3" FontSize="28" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+				<Button Click="OnMoveClick" CommandParameter="4" FontSize="28" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+				<Button Click="OnMoveClick" CommandParameter="5" FontSize="28" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+				<Button Click="OnMoveClick" CommandParameter="6" FontSize="28" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+				<Button Click="OnMoveClick" CommandParameter="7" FontSize="28" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+				<Button Click="OnMoveClick" CommandParameter="8" FontSize="28" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+			</UniformGrid>
+
+			<TextBlock Text="Сложность бота:" HorizontalAlignment="Center" Margin="0,10,0,0" FontSize="12" Foreground="Gray"/>
+			<Grid ColumnDefinitions="*,*,*">
+				<RadioButton Grid.Column="0" Name="rbEasy" Content="Легкая" IsChecked="False" IsCheckedChanged="OnDifficultyChanged"/>
+				<RadioButton Grid.Column="1" Name="rbMedium" Content="Средняя" IsChecked="True" IsCheckedChanged="OnDifficultyChanged"/>
+				<RadioButton Grid.Column="2" Name="rbHard" Content="Сложная" IsChecked="False" IsCheckedChanged="OnDifficultyChanged"/>
+			</Grid>
+		</StackPanel>
+	</StackPanel>
+</Window>
